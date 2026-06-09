@@ -1,8 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Filter } from 'lucide-react';
-import { supabase } from '../../supabaseClient';
+import { createClient } from '@supabase/supabase-js';
 import './Artworks.scss';
+
+// Pulling keys from environment variables rather than hardcoding them
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function Artworks() {
   const [artworks, setArtworks] = useState([]);
