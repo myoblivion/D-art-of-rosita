@@ -1,0 +1,112 @@
+@use 'variables' as *;
+
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --surface-soft: rgba(255, 255, 255, 0.66);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text: #101318;
+  --muted: #6c7280;
+  --border: rgba(16, 19, 24, 0.1);
+  --shadow: 0 18px 46px rgba(16, 19, 24, 0.08);
+  --accent: #b88b2e;
+  --accent-strong: #d3a13a;
+  --hero-panel: rgba(14, 17, 22, 0.18);
+  --hero-panel-border: rgba(255, 255, 255, 0.16);
+  --hero-text: #ffffff;
+  --hero-muted: rgba(255, 255, 255, 0.8);
+  --nav-bg: rgba(255, 255, 255, 0.86);
+  --nav-text: #101318;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0d1016;
+  --surface: rgba(20, 24, 32, 0.88);
+  --surface-soft: rgba(255, 255, 255, 0.05);
+  --card-bg: rgba(20, 24, 32, 0.94);
+  --text: #eef1f5;
+  --muted: #a7afbd;
+  --border: rgba(255, 255, 255, 0.09);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  --accent: #d4a84b;
+  --accent-strong: #efc45f;
+  --hero-panel: rgba(8, 10, 14, 0.34);
+  --hero-panel-border: rgba(255, 255, 255, 0.12);
+  --hero-text: #ffffff;
+  --hero-muted: rgba(255, 255, 255, 0.78);
+  --nav-bg: rgba(18, 22, 29, 0.86);
+  --nav-text: #f5f7fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-main;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container,
+.section-shell {
+  width: min(100%, $content-width);
+  margin: 0 auto;
+  padding-inline: clamp(1rem, 2.2vw, 2.5rem);
+}
+
+::selection {
+  background: rgba(184, 139, 46, 0.22);
+  color: var(--text);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slowDrift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(-1.2%, 1.2%, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.75s ease-out forwards;
+}

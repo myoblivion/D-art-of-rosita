@@ -1,0 +1,135 @@
+@use '../../Styles/variables' as *;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 30px rgba(15, 17, 24, 0.04);
+}
+
+.nav-content {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 78px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.brand__logo {
+  display: block;
+  height: 114px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2.4rem);
+  flex-wrap: wrap;
+
+  a {
+    position: relative;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    padding: 0.25rem 0 0.45rem;
+    transition: $transition;
+    white-space: nowrap;
+
+    &:hover,
+    &.active {
+      color: var(--nav-text);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: $transition-slow;
+    }
+
+    &:hover::after,
+    &.active::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--nav-text);
+  box-shadow: 0 10px 24px rgba(15, 17, 24, 0.06);
+  cursor: pointer;
+  transition: $transition-slow;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(184, 139, 46, 0.32);
+  }
+
+  &__icon {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  &__text {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-content {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 0.85rem 1.2rem;
+  }
+
+  .theme-toggle {
+    justify-self: center;
+  }
+
+  .brand__logo {
+    height: 50px;
+  }
+}
